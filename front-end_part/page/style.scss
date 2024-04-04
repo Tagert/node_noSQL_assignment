@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: "Inria Sans", sans-serif;
+  height: 100vh;
+}
+
+input,
+select {
+  max-width: 10rem;
+  max-height: 2rem;
+  padding: 0.4rem 0.6rem;
+  border: 0.1rem solid black;
+  border-radius: 0.4rem;
+  outline: none;
+}
+
+.container {
+  padding: 1rem;
+}
+
+.frame {
+  border: 0.1rem solid black;
+  border-radius: 0.6rem;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 2rem;
+}
+
+.header {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10rem;
+
+    .navbar-list {
+      display: flex;
+      gap: 2rem;
+
+      a {
+        font-size: 1.1rem;
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+
+.main {
+  .form-section {
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        h2 {
+          text-align: center;
+        }
+
+        img {
+          width: 1.8rem;
+          cursor: pointer;
+        }
+      }
+
+      .inputs-container {
+        display: flex;
+        justify-content: space-between;
+
+        .inputs-box {
+          display: flex;
+          flex-direction: column;
+          gap: 0.7rem;
+          width: 35%;
+
+          .inputs {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .add-flight-box {
+            display: flex;
+            justify-content: center;
+
+            #add-flight-btn {
+              border: 0.1rem solid black;
+              border-radius: 0.2rem;
+              padding: 0.3rem 0.5rem;
+              cursor: pointer;
+
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+
+        .description {
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  .flights-section {
+    .flights-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 2rem;
+
+      .flight-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 23rem;
+        border: 0.1rem solid black;
+        border-radius: 0.6rem;
+        padding: 1rem;
+
+        .image-box {
+          width: 20rem;
+          height: 11.25rem;
+          border-radius: 0.6rem;
+          overflow: hidden;
+          cursor: pointer;
+
+          image {
+            object-fit: cover;
+          }
+        }
+
+        #edit-btn {
+          align-self: flex-end;
+          border: 0.1rem solid black;
+          border-radius: 0.2rem;
+          padding: 0.3rem 0.5rem;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}

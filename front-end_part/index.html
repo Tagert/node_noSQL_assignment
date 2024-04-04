@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./page/style.css" />
+    <title>My Travel Planner</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="navbar frame">
+          <div class="title">
+            <h1>My Travel Planner</h1>
+          </div>
+
+          <div class="navbar-list">
+            <a href="./index.html">Multiple Flights Worldwide</a>
+            <a href="#">Add an Flight</a>
+            <a href="#">My Planned Flights</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="form-section">
+        <div class="container">
+          <div class="form-container frame">
+            <div class="wrapper">
+              <h2>Provide the details of the new Flight that you are interested in.</h2>
+              <img src="./page/assets/down_arrow_icon.svg" alt="Down arrow icon" />
+            </div>
+
+            <div class="inputs-container">
+              <div class="inputs-box">
+                <div class="price-input inputs">
+                  <label for="price">Price:</label>
+                  <input
+                    id="price"
+                    type="number"
+                    placeholder="Eur..."
+                    autocomplete="on"
+                    required
+                  />
+                </div>
+
+                <div class="departure-city-input inputs">
+                  <label for="departureCity">Departure City:</label>
+                  <input
+                    id="departureCity"
+                    type="text"
+                    placeholder="City..."
+                    autocomplete="on"
+                    required
+                  />
+                </div>
+
+                <div class="destination-city-input inputs">
+                  <label for="destinationCity">Destination City:</label>
+                  <input
+                    id="destinationCity"
+                    type="text"
+                    placeholder="City..."
+                    autocomplete="on"
+                    required
+                  />
+                </div>
+
+                <div class="destination-city-photo-input inputs">
+                  <label for="destinationCityPhotoUrl">Destination City Photo:</label>
+                  <input
+                    id="destinationCityPhotoUrl"
+                    type="text"
+                    placeholder="Url..."
+                    autocomplete="on"
+                    required
+                  />
+                </div>
+
+                <div class="departure-time-input inputs">
+                  <label for="departureTime">Departure Time:</label>
+                  <input
+                    id="departureTime"
+                    type="text"
+                    placeholder="2024-04-05T10:00:00"
+                    autocomplete="on"
+                    required
+                  />
+                </div>
+
+                <div class="add-flight-box">
+                  <button id="add-flight-btn">Add an Flight</button>
+                </div>
+              </div>
+
+              <div class="description">
+                <h2>
+                  Let me know the date, time, departure and destination cities, and any
+                  other preferences you may have.
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="flights-section">
+        <div class="container">
+          <div class="flights-container frame"></div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
