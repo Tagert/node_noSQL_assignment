@@ -115,4 +115,29 @@ const GET_CART_BY_ID = async (req, res) => {
   }
 };
 
-export { ADD_CART, ADD_FLIGHT_ID_TO_CART, GET_ALL_CARTS, GET_CART_BY_ID };
+const DELETE_CART_BY_ID = async (req, res) => {
+  try {
+    const deleteFlightsCart = await flightsCartsModel.findByIdAndDelete(
+      req.params.id
+    );
+
+    if (!deleteFlightsCart) {
+      return res.status(404).json({
+        message: `Cart with ID ${req.params.id} not found`,
+      });
+    }
+
+    return res.json(deleteFlightsCart);
+  } catch (err) {
+    console.log("HANDLED ERROR:", err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+export {
+  ADD_CART,
+  ADD_FLIGHT_ID_TO_CART,
+  GET_ALL_CARTS,
+  GET_CART_BY_ID,
+  DELETE_CART_BY_ID,
+};

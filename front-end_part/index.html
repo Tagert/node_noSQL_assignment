@@ -16,8 +16,8 @@
 
           <div class="navbar-list">
             <a href="./index.html">Multiple Flights Worldwide</a>
-            <a href="#">Add an Flight</a>
-            <a href="#">My Planned Flights</a>
+            <a id="linkFlightWrapper" href="#">Add an Flight</a>
+            <a href="./editCart.html">My Planned Flights</a>
           </div>
         </nav>
       </div>
@@ -29,7 +29,11 @@
           <div class="form-container frame">
             <div class="wrapper">
               <h2>Provide the details of the new Flight that you are interested in.</h2>
-              <img src="./page/assets/down_arrow_icon.svg" alt="Down arrow icon" />
+              <img
+                id="addFlightWrapper"
+                src="./page/assets/down_arrow_icon.svg"
+                alt="Down arrow icon"
+              />
             </div>
 
             <div class="inputs-container">
@@ -95,10 +99,12 @@
               </div>
 
               <div class="description">
-                <h2>
+                <h3>
                   Let me know the date, time, departure and destination cities, and any
                   other preferences you may have.
-                </h2>
+                </h3>
+
+                <div id="statusMessages"><h3>Please fill all inputs</h3></div>
               </div>
             </div>
           </div>

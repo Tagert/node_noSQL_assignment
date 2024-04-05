@@ -6,14 +6,15 @@ import {
   destinationCityPhotoUrlInput,
   departureTimeInput,
   editFlightButton,
-  statusDiv,
   cartEmails,
   selectContainer,
+  selectElement,
 } from "./utils/variables/htmlVariables.ts";
 import { flightsContainer } from "./utils/variables/htmlVariables.ts";
 import { FlightType } from "./features/flight.types.ts";
 import { Flight } from "./features/Flight.ts";
 import { CartType } from "./features/cart.types.ts";
+import { displayStatus } from "./utils/functionalities/displayStatus.ts";
 
 const selectedIdFetch = async () => {
   try {
@@ -38,7 +39,7 @@ const initPage = async () => {
 
   const cartsData = await cartsEmailFetch();
   console.log("Carts Data:", cartsData);
-  renderCartsToScreen(cartsData);
+  renderSelectCartToScreen(cartsData);
 };
 
 const renderFlightToScreen = (flight: FlightType) => {
@@ -85,15 +86,6 @@ const renderFlightToScreen = (flight: FlightType) => {
   imageBox.append(image);
 };
 
-const displayStatus = (isOk: boolean, text: string) => {
-  const statusText = document.createElement("h1");
-  statusDiv.innerHTML = "";
-
-  statusDiv.style.color = isOk ? "green" : "red";
-  statusText.innerHTML = text;
-  statusDiv.append(statusText);
-};
-
 const putFlight = async (flightData: FlightType) => {
   try {
     const response = await fetch(`http://localhost:3000/flights/${flightId}`, {
@@ -109,10 +101,10 @@ const putFlight = async (flightData: FlightType) => {
       throw new Error(response.statusText);
     }
 
-    displayStatus(true, "Item successfully edited.");
+    displayStatus(true, "Flight successfully edited.");
     setTimeout(() => {
       window.location.assign("../editFlight.html");
-    }, 8000);
+    }, 2500);
   } catch (error) {
     console.error("Error:", error);
   }
@@ -200,18 +192,60 @@ const cartsEmailFetch = async () => {
   }
 };
 
-const renderCartsToScreen = (carts: CartType[]) => {
+const renderSelectCartToScreen = (carts: CartType[]) => {
   const addToCartButton = document.createElement("button");
   addToCartButton.setAttribute("id", "add-to-cart-btn");
   addToCartButton.innerText = "Add a Flight to Cart";
   selectContainer.append(addToCartButton);
 
+  addToCartButton.addEventListener("click", async () => {
+    await addFlightToCart(selectElement.value);
+  });
+
   carts.forEach((cart) => {
     const option = document.createElement("option");
-    option.setAttribute("value", cart.userEmail);
-    option.innerText = cart.userEmail;
+    option.setAttribute("value", cart.id ?? "");
+    option.innerText = cart.userEmail ?? "Unknown User";
     cartEmails.append(option);
   });
+};
+
+const addFlightToCart = async (selectedCartId: string) => {
+  try {
+    const response = await fetch(`http://localhost:3000/carts/${selectedCartId}`);
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const cart = await response.json();
+
+    if (cart.userCartFlights_ids.includes(flightId)) {
+      displayStatus(
+        false,
+        `Flight with this ID (${flightId}) already exists in the cart.`,
+      );
+      return;
+    }
+
+    const addResponse = await fetch(`http://localhost:3000/carts/${selectedCartId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: flightId }),
+    });
+
+    if (!addResponse.ok) {
+      throw new Error(addResponse.statusText);
+    }
+
+    displayStatus(true, `Flight successfully added to cart.`);
+    setTimeout(() => {
+      window.location.assign("../editCart.html");
+    }, 1500);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 };
 
 editFlightButton.addEventListener("click", async () => {

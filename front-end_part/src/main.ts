@@ -1,8 +1,13 @@
-import { addFlightButton } from "./utils/variables/htmlVariables.ts";
+import {
+  addFlightButton,
+  addFlightWrapper,
+  linkFlightWrapper,
+} from "./utils/variables/htmlVariables.ts";
 import { FlightType } from "./features/flight.types.ts";
 import { renderFlightsToScreen } from "./utils/dom/renderToScreen.ts";
-// import { Flight } from "./features/Flight.ts";
 import { addFlightForm } from "./utils/functionalities/addFlight.ts";
+import { displayStatus } from "./utils/functionalities/displayStatus.ts";
+import { handleWrapperClick } from "./utils/functionalities/addFlightWrapper.ts";
 
 const fetchFlights = async () => {
   try {
@@ -14,12 +19,6 @@ const fetchFlights = async () => {
     console.error("Error:", error);
     return [];
   }
-};
-
-const initPage = async () => {
-  const flightsData = await fetchFlights();
-  console.log("Flight Data:", flightsData.flights);
-  renderFlightsToScreen(flightsData.flights);
 };
 
 const postFlight = async (flightData: FlightType) => {
@@ -37,7 +36,7 @@ const postFlight = async (flightData: FlightType) => {
       throw new Error(response.statusText);
     }
 
-    // displayStatus(true, "Item successfully added.");
+    displayStatus(true, "Flight successfully added.");
     setTimeout(() => {
       window.location.assign("../index.html");
     }, 1500);
@@ -46,9 +45,18 @@ const postFlight = async (flightData: FlightType) => {
   }
 };
 
+const initPage = async () => {
+  const flightsData = await fetchFlights();
+  console.log("Flight Data:", flightsData.flights);
+  renderFlightsToScreen(flightsData.flights);
+};
+
 initPage();
 
 addFlightButton.addEventListener("click", async () => {
   const newFlightData = addFlightForm();
   await postFlight(newFlightData);
 });
+
+addFlightWrapper.addEventListener("click", handleWrapperClick);
+linkFlightWrapper.addEventListener("click", handleWrapperClick);

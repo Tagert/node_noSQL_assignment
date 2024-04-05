@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./page/editCart.css" />
+    <title>My Travel Planner</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="navbar frame">
+          <div class="title">
+            <h1>My Travel Planner</h1>
+          </div>
+
+          <div class="navbar-list">
+            <a href="./index.html">Multiple Flights Worldwide</a>
+            <a href="./index.html">Add an Flight</a>
+            <a href="./editCart.html">My Planned Flights</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="form-section">
+        <div class="container">
+          <div class="form-container frame">
+            <div class="wrapper">
+              <h2>Provide the details of the new Cart that you want to create</h2>
+              <img src="./page/assets/down_arrow_icon.svg" alt="Down arrow icon" />
+            </div>
+
+            <div class="inputs-container">
+              <div class="inputs-box">
+                <div class="user-email-input inputs">
+                  <label for="userEmail">User Email:</label>
+                  <input
+                    id="userEmail"
+                    type="text"
+                    placeholder="example@email.com"
+                    autocomplete="on"
+                    required
+                  />
+                </div>
+
+                <div class="add-cart-box">
+                  <button id="add-cart-btn">Add a new Cart</button>
+                </div>
+              </div>
+
+              <div class="description">
+                <h3>For easy management, create a cart using your email</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="carts-section">
+        <div class="container">
+          <div class="carts-container"></div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/editCart.ts"></script>
+  </body>
+</html>

@@ -61,6 +61,9 @@ select {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-height: 4rem;
+  overflow: hidden;
+  transition: all 350ms ease;
 }
 .main .form-section .form-container .wrapper {
   display: flex;
@@ -103,7 +106,19 @@ select {
   opacity: 0.8;
 }
 .main .form-section .form-container .inputs-container .description {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   width: 40%;
+}
+.main .form-section .form-container .inputs-container .description h3 {
+  text-align: justify;
+  letter-spacing: 0.05rem;
+  padding-right: 2rem;
+  font-size: 1.1rem;
+}
+.main .form-section .form-container-active {
+  max-height: 20.465rem;
 }
 .main .flights-section .flights-container {
   display: flex;
