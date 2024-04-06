@@ -32,16 +32,6 @@ const selectedIdFetch = async () => {
   }
 };
 
-const initPage = async () => {
-  const flightsData = await selectedIdFetch();
-  console.log("Flight Data:", flightsData);
-  renderFlightToScreen(flightsData);
-
-  const cartsData = await cartsEmailFetch();
-  console.log("Carts Data:", cartsData);
-  renderSelectCartToScreen(cartsData);
-};
-
 const renderFlightToScreen = (flight: FlightType) => {
   flightsContainer.innerHTML = "";
 
@@ -84,6 +74,16 @@ const renderFlightToScreen = (flight: FlightType) => {
     removeButton,
   );
   imageBox.append(image);
+};
+
+const initPage = async () => {
+  const flightsData = await selectedIdFetch();
+  console.log("Flight Data:", flightsData);
+  renderFlightToScreen(flightsData);
+
+  const cartsData = await cartsEmailFetch();
+  console.log("Carts Data:", cartsData);
+  renderSelectCartToScreen(cartsData);
 };
 
 const putFlight = async (flightData: FlightType) => {

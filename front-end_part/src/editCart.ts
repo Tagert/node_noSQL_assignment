@@ -1,6 +1,8 @@
 import { Cart } from "./features/Cart";
 import { CartType } from "./features/cart.types";
 import { FlightType } from "./features/flight.types";
+import { displayStatus } from "./utils/functionalities/displayStatus";
+import { popUpStatus, statusMessage } from "./utils/functionalities/popUpStatus";
 import {
   addCartButton,
   cartsContainer,
@@ -34,7 +36,7 @@ const postCart = async (cartData: CartType) => {
       throw new Error(response.statusText);
     }
 
-    // displayStatus(true, "Item successfully added.");
+    displayStatus(true, "Cart successfully added.");
     setTimeout(() => {
       window.location.assign("../editCart.html");
     }, 1500);
@@ -140,9 +142,13 @@ const removeCart = async (cardId: string) => {
     if (!response.ok) {
       throw new Error(`Failed to delete item. Status code: ${response.status}`);
     } else {
-      //   displayStatus(response.ok, "Item has been successfully removed.");
       console.log(`Cart with id ${cardId} has been deleted.`);
+
+      popUpStatus();
       setTimeout(() => {
+        if (statusMessage) {
+          statusMessage.remove();
+        }
         window.location.href = "../editCart.html";
       }, 1500);
     }

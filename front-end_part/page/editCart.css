@@ -106,6 +106,9 @@ select {
   opacity: 0.8;
 }
 .main .form-section .container .form-container .inputs-container .description {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   width: 40%;
 }
 .main .carts-section .container {
