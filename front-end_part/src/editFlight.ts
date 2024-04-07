@@ -11,9 +11,9 @@ import {
   selectElement,
 } from "./utils/variables/htmlVariables.ts";
 import { flightsContainer } from "./utils/variables/htmlVariables.ts";
-import { FlightType } from "./features/flight.types.ts";
-import { Flight } from "./features/Flight.ts";
-import { CartType } from "./features/cart.types.ts";
+import { FlightType } from "./features/flights/flight.types.ts";
+import { Flight } from "./features/flights/Flight.ts";
+import { CartType } from "./features/carts/cart.types.ts";
 import { displayStatus } from "./utils/functionalities/displayStatus.ts";
 
 const selectedIdFetch = async () => {
@@ -104,7 +104,7 @@ const putFlight = async (flightData: FlightType) => {
     displayStatus(true, "Flight successfully edited.");
     setTimeout(() => {
       window.location.assign("../editFlight.html");
-    }, 2500);
+    }, 1500);
   } catch (error) {
     console.error("Error:", error);
   }

@@ -1,5 +1,5 @@
 import { CartType } from "./cart.types";
-import { FlightType } from "./flight.types";
+import { FlightType } from "../flights/flight.types";
 
 export class Cart {
   date?: Date;

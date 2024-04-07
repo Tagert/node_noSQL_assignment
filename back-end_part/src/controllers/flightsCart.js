@@ -134,10 +134,35 @@ const DELETE_CART_BY_ID = async (req, res) => {
   }
 };
 
+const DELETE_FLIGHT_FROM_CARD_BY_ID = async (req, res) => {
+  try {
+    const flightIdToDelete = req.params.flightId;
+    const cartId = req.params.cartId;
+
+    const updatedCart = await flightsCartsModel.findByIdAndUpdate(
+      cartId,
+      { $pull: { userCartFlights_ids: flightIdToDelete } },
+      { new: true }
+    );
+
+    if (!updatedCart) {
+      return res.status(404).json({
+        message: `Cart with ID ${cartId} not found`,
+      });
+    }
+
+    return res.json(updatedCart);
+  } catch (err) {
+    console.log("HANDLED ERROR:", err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
 export {
   ADD_CART,
   ADD_FLIGHT_ID_TO_CART,
   GET_ALL_CARTS,
   GET_CART_BY_ID,
   DELETE_CART_BY_ID,
+  DELETE_FLIGHT_FROM_CARD_BY_ID,
 };

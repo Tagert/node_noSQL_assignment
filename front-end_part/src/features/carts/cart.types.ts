@@ -1,4 +1,4 @@
-import { FlightType } from "./flight.types";
+import { FlightType } from "../flights/flight.types";
 
 export type CartType = {
   date?: Date;

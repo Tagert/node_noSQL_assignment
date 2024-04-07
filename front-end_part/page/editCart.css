@@ -137,9 +137,9 @@ select {
   font-size: 1.1rem;
 }
 .main .carts-section .container .carts-container .cart-info #remove-cart-btn {
-  font-weight: bold;
   width: 1.2rem;
   height: 1.2rem;
+  font-weight: 500;
   margin-right: 2rem;
   cursor: pointer;
 }
@@ -160,6 +160,11 @@ select {
   border: 0.1rem solid black;
   border-radius: 0.6rem;
   padding: 1rem;
+}
+.main .carts-section .container .carts-container .cart-card .flight-card #remove-flight-btn {
+  align-self: flex-end;
+  width: 1rem;
+  cursor: pointer;
 }
 .main .carts-section .container .carts-container .cart-card #edit-btn {
   align-self: flex-end;

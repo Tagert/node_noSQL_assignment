@@ -1,6 +1,6 @@
-import { Cart } from "./features/Cart";
-import { CartType } from "./features/cart.types";
-import { FlightType } from "./features/flight.types";
+import { Cart } from "./features/carts/Cart";
+import { CartType } from "./features/carts/cart.types";
+import { FlightType } from "./features/flights/flight.types";
 import { displayStatus } from "./utils/functionalities/displayStatus";
 import { popUpStatus, statusMessage } from "./utils/functionalities/popUpStatus";
 import {
@@ -40,6 +40,65 @@ const postCart = async (cartData: CartType) => {
     setTimeout(() => {
       window.location.assign("../editCart.html");
     }, 1500);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const removeCart = async (cardId: string) => {
+  try {
+    const response = await fetch(`http://localhost:3000/carts/${cardId}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete item. Status code: ${response.status}`);
+    } else {
+      console.log(`Cart with id ${cardId} has been deleted.`);
+
+      popUpStatus("Cart has been successfully removed.");
+      setTimeout(() => {
+        if (statusMessage) {
+          statusMessage.remove();
+        }
+        window.location.href = "../editCart.html";
+      }, 1500);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const removeFlightFromCart = async (flightId: string, cardId: string) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/carts/${cardId}/flight/${flightId}`,
+      {
+        method: "DELETE",
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete item. Status code: ${response.status}`);
+    } else {
+      console.log(`Flight with id ${flightId} has been deleted.`);
+
+      popUpStatus("Flight from cart has been successfully removed.");
+      setTimeout(() => {
+        if (statusMessage) {
+          statusMessage.remove();
+        }
+        window.location.href = "../editCart.html";
+      }, 1500);
+    }
   } catch (error) {
     console.error("Error:", error);
   }
@@ -95,6 +154,10 @@ const renderCartsToScreen = (carts: CartType[]) => {
       const flightCard = document.createElement("div") as HTMLDivElement;
       flightCard.classList.add("flight-card");
 
+      const removeFlightButton = document.createElement("img") as HTMLImageElement;
+      removeFlightButton.setAttribute("id", "remove-flight-btn");
+      removeFlightButton.src = "../page/assets/remove_recycle_icon.svg";
+
       const price = document.createElement("p") as HTMLParagraphElement;
       price.innerText = `Price: ${flight.price}€`;
       const departureCity = document.createElement("p") as HTMLParagraphElement;
@@ -118,8 +181,20 @@ const renderCartsToScreen = (carts: CartType[]) => {
         navigateToDescriptionPage(flightId);
       });
 
+      removeFlightButton.addEventListener("click", () => {
+        localStorage.setItem("flightId", flightId);
+        removeFlightFromCart(flightId, cartId);
+      });
+
       cartCard.append(flightCard);
-      flightCard.append(departureCity, destinationCity, departureTime, price, editButton);
+      flightCard.append(
+        removeFlightButton,
+        departureCity,
+        destinationCity,
+        departureTime,
+        price,
+        editButton,
+      );
     });
 
     cartsContainer.append(cartInfoContainer, cartCard);
@@ -127,34 +202,6 @@ const renderCartsToScreen = (carts: CartType[]) => {
     userContainer.append(userDescription, userEmail);
     removeContainer.append(removeCartButton);
   });
-};
-
-const removeCart = async (cardId: string) => {
-  try {
-    const response = await fetch(`http://localhost:3000/carts/${cardId}`, {
-      method: "DELETE",
-    });
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    if (!response.ok) {
-      throw new Error(`Failed to delete item. Status code: ${response.status}`);
-    } else {
-      console.log(`Cart with id ${cardId} has been deleted.`);
-
-      popUpStatus();
-      setTimeout(() => {
-        if (statusMessage) {
-          statusMessage.remove();
-        }
-        window.location.href = "../editCart.html";
-      }, 1500);
-    }
-  } catch (error) {
-    console.error("Error:", error);
-  }
 };
 
 const initPage = async () => {

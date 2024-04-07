@@ -3,7 +3,7 @@ import {
   addFlightWrapper,
   linkFlightWrapper,
 } from "./utils/variables/htmlVariables.ts";
-import { FlightType } from "./features/flight.types.ts";
+import { FlightType } from "./features/flights/flight.types.ts";
 import { renderFlightsToScreen } from "./utils/dom/renderToScreen.ts";
 import { addFlightForm } from "./utils/functionalities/addFlight.ts";
 import { displayStatus } from "./utils/functionalities/displayStatus.ts";

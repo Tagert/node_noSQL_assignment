@@ -1,4 +1,4 @@
-import { FlightType } from "../../features/flight.types";
+import { FlightType } from "../../features/flights/flight.types";
 import {
   priceInput,
   departureCityInput,
@@ -6,7 +6,7 @@ import {
   destinationCityPhotoUrlInput,
   departureTimeInput,
 } from "../variables/htmlVariables";
-import { Flight } from "../../features/Flight";
+import { Flight } from "../../features/flights/Flight";
 
 export const addFlightForm = (): Flight => {
   const newFlightData: FlightType = {

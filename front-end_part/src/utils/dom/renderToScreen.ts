@@ -1,5 +1,5 @@
 import { flightsContainer } from "../variables/htmlVariables";
-import { FlightType } from "../../features/flight.types";
+import { FlightType } from "../../features/flights/flight.types";
 
 export const renderFlightsToScreen = (flights: FlightType[]) => {
   flightsContainer.innerHTML = "";

@@ -1,9 +1,9 @@
 export let statusMessage: HTMLElement | null;
 
-export const popUpStatus = () => {
+export const popUpStatus = (message: string) => {
   const statusMessage = document.createElement("div");
   statusMessage.classList.add("status-message");
-  statusMessage.textContent = "Cart has been successfully removed.";
+  statusMessage.textContent = message;
   statusMessage.setAttribute(
     "style",
     `
