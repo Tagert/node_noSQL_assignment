@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import flightRoutes from "./src/routers/flights.js";
 import flightsCartsRoutes from "./src/routers/flightsCart.js";
+import userRouter from "./src/routers/users.js";
 import "dotenv/config";
 
 const app = express();
@@ -19,6 +20,7 @@ mongoose
 
 app.use(flightRoutes);
 app.use(flightsCartsRoutes);
+app.use(userRouter);
 
 app.use((req, res) => {
   return res.status(404).json({ status: "Endpoint does not exist" });
