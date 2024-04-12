@@ -9,12 +9,12 @@ import {
   cartEmails,
   selectContainer,
   selectElement,
-} from "./utils/variables/htmlVariables.ts";
-import { flightsContainer } from "./utils/variables/htmlVariables.ts";
+} from "./utils/dom/htmlVariables.ts";
+import { flightsContainer } from "./utils/dom/htmlVariables.ts";
 import { FlightType } from "./features/flights/flight.types.ts";
 import { Flight } from "./features/flights/Flight.ts";
 import { CartType } from "./features/carts/cart.types.ts";
-import { displayStatus } from "./utils/functionalities/displayStatus.ts";
+import { displayStatus } from "./utils/controllers/displayStatus.ts";
 
 const selectedIdFetch = async () => {
   try {
@@ -103,7 +103,7 @@ const putFlight = async (flightData: FlightType) => {
 
     displayStatus(true, "Flight successfully edited.");
     setTimeout(() => {
-      window.location.assign("../editFlight.html");
+      window.location.assign(`./editFlight.html?id=${flightId}`);
     }, 1500);
   } catch (error) {
     console.error("Error:", error);
@@ -168,7 +168,7 @@ const removeFlight = async () => {
       displayStatus(response.ok, "Item has been successfully removed.");
       console.log(`Item with id ${flightId} has been deleted.`);
       setTimeout(() => {
-        window.location.href = "../index.html";
+        window.location.href = "../../index.html";
       }, 1500);
     }
   } catch (error) {
@@ -241,7 +241,7 @@ const addFlightToCart = async (selectedCartId: string) => {
 
     displayStatus(true, `Flight successfully added to cart.`);
     setTimeout(() => {
-      window.location.assign("../editCart.html");
+      window.location.assign("../edit_cart/editCart.html");
     }, 1500);
   } catch (error) {
     console.error("Error:", error);

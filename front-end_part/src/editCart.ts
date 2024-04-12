@@ -1,13 +1,9 @@
 import { Cart } from "./features/carts/Cart";
 import { CartType } from "./features/carts/cart.types";
 import { FlightType } from "./features/flights/flight.types";
-import { displayStatus } from "./utils/functionalities/displayStatus";
-import { popUpStatus, statusMessage } from "./utils/functionalities/popUpStatus";
-import {
-  addCartButton,
-  cartsContainer,
-  userEmailInput,
-} from "./utils/variables/htmlVariables";
+import { displayStatus } from "./utils/controllers/displayStatus";
+import { popUpStatus, statusMessage } from "./utils/controllers/popUpStatus";
+import { addCartButton, cartsContainer, userEmailInput } from "./utils/dom/htmlVariables";
 
 const fetchCarts = async () => {
   try {
@@ -38,7 +34,7 @@ const postCart = async (cartData: CartType) => {
 
     displayStatus(true, "Cart successfully added.");
     setTimeout(() => {
-      window.location.assign("../editCart.html");
+      window.location.assign("./editCart.html");
     }, 1500);
   } catch (error) {
     console.error("Error:", error);
@@ -65,7 +61,7 @@ const removeCart = async (cardId: string) => {
         if (statusMessage) {
           statusMessage.remove();
         }
-        window.location.href = "../editCart.html";
+        window.location.href = "./editCart.html";
       }, 1500);
     }
   } catch (error) {
@@ -96,7 +92,7 @@ const removeFlightFromCart = async (flightId: string, cardId: string) => {
         if (statusMessage) {
           statusMessage.remove();
         }
-        window.location.href = "../editCart.html";
+        window.location.href = "./editCart.html";
       }, 1500);
     }
   } catch (error) {
@@ -156,7 +152,7 @@ const renderCartsToScreen = (carts: CartType[]) => {
 
       const removeFlightButton = document.createElement("img") as HTMLImageElement;
       removeFlightButton.setAttribute("id", "remove-flight-btn");
-      removeFlightButton.src = "../page/assets/remove_recycle_icon.svg";
+      removeFlightButton.src = "../../public/assets/remove_recycle_icon.svg";
 
       const price = document.createElement("p") as HTMLParagraphElement;
       price.innerText = `Price: ${flight.price}€`;
@@ -172,7 +168,7 @@ const renderCartsToScreen = (carts: CartType[]) => {
       editButton.innerText = "Edit Flight";
 
       const navigateToDescriptionPage = (flightId: string) => {
-        const flightPageUrl = `./editFlight.html?id=${flightId}`;
+        const flightPageUrl = `../edit_flight/editFlight.html?id=${flightId}`;
         window.location.href = flightPageUrl;
       };
 

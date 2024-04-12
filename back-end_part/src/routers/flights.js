@@ -10,6 +10,7 @@ import {
   PAGINATED_FLIGHTS,
   APP_STATUS,
 } from "../controllers/flights.js";
+import auth from "../middlewares/auth.js";
 
 const router = express.Router();
 
@@ -25,7 +26,7 @@ router.delete("/flights/:id", DELETE_FLIGHT_BY_ID);
 
 router.put("/flights/:id", UPDATE_FLIGHT_BY_ID);
 
-router.get("/flights/page/:pageNumber", PAGINATED_FLIGHTS);
+router.get("/flights/page/:pageNumber", auth, PAGINATED_FLIGHTS);
 
 router.get("/status", APP_STATUS);
 

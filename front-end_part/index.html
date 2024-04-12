@@ -3,21 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./page/style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>My Travel Planner</title>
+    <link rel="icon" type="image/x-icon" href="./public/favicon.ico" />
   </head>
   <body>
     <header class="header">
       <div class="container">
         <nav class="navbar frame">
           <div class="title">
-            <h1>My Travel Planner</h1>
+            <a href="./index.html">
+              <h1>My Travel Planner</h1>
+            </a>
           </div>
 
           <div class="navbar-list">
             <a href="./index.html">Multiple Flights Worldwide</a>
             <a id="linkFlightWrapper" href="#">Add an Flight</a>
-            <a href="./editCart.html">My Planned Flights</a>
+            <a href="./pages/edit_cart/editCart.html">My Planned Flights</a>
           </div>
         </nav>
       </div>
@@ -31,7 +34,7 @@
               <h2>Provide the details of the new Flight that you are interested in.</h2>
               <img
                 id="addFlightWrapper"
-                src="./page/assets/down_arrow_icon.svg"
+                src="./public/assets/down_arrow_icon.svg"
                 alt="Down arrow icon"
               />
             </div>

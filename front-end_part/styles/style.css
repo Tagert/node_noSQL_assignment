@@ -47,6 +47,10 @@ select {
   justify-content: space-between;
   height: 10rem;
 }
+.header .navbar .title a {
+  text-decoration: none;
+  color: black;
+}
 .header .navbar .navbar-list {
   display: flex;
   gap: 2rem;

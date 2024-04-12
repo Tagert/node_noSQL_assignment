@@ -1,4 +1,4 @@
-import { flightsContainer } from "../variables/htmlVariables";
+import { flightsContainer } from "./htmlVariables";
 import { FlightType } from "../../features/flights/flight.types";
 
 export const renderFlightsToScreen = (flights: FlightType[]) => {
@@ -47,7 +47,7 @@ export const renderFlightsToScreen = (flights: FlightType[]) => {
     imageBox.append(image);
 
     const navigateToDescriptionPage = (flightId: string) => {
-      const flightPageUrl = `./editFlight.html?id=${flightId}`;
+      const flightPageUrl = `../../../pages/edit_flight/editFlight.html?id=${flightId}`;
       window.location.href = flightPageUrl;
     };
 

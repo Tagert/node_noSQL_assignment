@@ -5,7 +5,7 @@ import {
   destinationCityInput,
   destinationCityPhotoUrlInput,
   departureTimeInput,
-} from "../variables/htmlVariables";
+} from "../dom/htmlVariables";
 import { Flight } from "../../features/flights/Flight";
 
 export const addFlightForm = (): Flight => {

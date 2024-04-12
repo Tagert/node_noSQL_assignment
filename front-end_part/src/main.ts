@@ -2,12 +2,12 @@ import {
   addFlightButton,
   addFlightWrapper,
   linkFlightWrapper,
-} from "./utils/variables/htmlVariables.ts";
+} from "./utils/dom/htmlVariables.ts";
 import { FlightType } from "./features/flights/flight.types.ts";
 import { renderFlightsToScreen } from "./utils/dom/renderToScreen.ts";
-import { addFlightForm } from "./utils/functionalities/addFlight.ts";
-import { displayStatus } from "./utils/functionalities/displayStatus.ts";
-import { handleWrapperClick } from "./utils/functionalities/addFlightWrapper.ts";
+import { addFlightForm } from "./utils/controllers/addFlight.ts";
+import { displayStatus } from "./utils/controllers/displayStatus.ts";
+import { handleWrapperClick } from "./utils/controllers/addFlightWrapper.ts";
 
 const fetchFlights = async () => {
   try {
