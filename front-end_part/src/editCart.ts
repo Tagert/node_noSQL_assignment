@@ -152,7 +152,7 @@ const renderCartsToScreen = (carts: CartType[]) => {
 
       const removeFlightButton = document.createElement("img") as HTMLImageElement;
       removeFlightButton.setAttribute("id", "remove-flight-btn");
-      removeFlightButton.src = "../../public/assets/remove_recycle_icon.svg";
+      removeFlightButton.src = "../../assets/remove_recycle_icon.svg";
 
       const price = document.createElement("p") as HTMLParagraphElement;
       price.innerText = `Price: ${flight.price}€`;

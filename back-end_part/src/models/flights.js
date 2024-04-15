@@ -7,6 +7,7 @@ const flightSchema = mongoose.Schema({
   destinationCity: { type: String, required: true, min: 3 },
   destinationCityPhotoUrl: { type: String, required: true, min: 3 },
   departureTime: { type: String, required: true, min: 3 },
+  userId: { type: String, required: true },
 });
 
 const FlightModel = mongoose.model("flight", flightSchema);

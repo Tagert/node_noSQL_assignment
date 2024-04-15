@@ -11,7 +11,20 @@ import { handleWrapperClick } from "./utils/controllers/addFlightWrapper.ts";
 
 const fetchFlights = async () => {
   try {
-    const response = await fetch("http://localhost:3000/flights");
+    const jwtToken = localStorage.getItem("jwt");
+
+    if (!jwtToken) {
+      throw new Error("JWT token not found");
+    }
+
+    const response = await fetch("http://localhost:3000/flights", {
+      method: "GET",
+      headers: {
+        Authorization: `${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+    });
+
     const flights = await response.json();
 
     return flights;

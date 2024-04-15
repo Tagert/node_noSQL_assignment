@@ -49,7 +49,8 @@ select {
     justify-content: space-between;
     height: 10rem;
 
-    .navbar-list {
+    .navbar-list,
+    .account-manager {
       display: flex;
       gap: 2rem;
 

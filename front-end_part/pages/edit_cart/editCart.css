@@ -47,11 +47,13 @@ select {
   justify-content: space-between;
   height: 10rem;
 }
-.header .navbar .navbar-list {
+.header .navbar .navbar-list,
+.header .navbar .account-manager {
   display: flex;
   gap: 2rem;
 }
-.header .navbar .navbar-list a {
+.header .navbar .navbar-list a,
+.header .navbar .account-manager a {
   font-size: 1.1rem;
   text-decoration: none;
   color: black;

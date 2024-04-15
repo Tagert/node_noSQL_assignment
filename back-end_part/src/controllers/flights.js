@@ -4,11 +4,7 @@ import { flightsCartsModel } from "../models/flightsCart.js";
 const ADD_FLIGHT = async (req, res) => {
   try {
     const flight = new FlightModel({
-      price: req.body.price,
-      departureCity: req.body.departureCity,
-      destinationCity: req.body.destinationCity,
-      destinationCityPhotoUrl: req.body.destinationCityPhotoUrl,
-      departureTime: req.body.departureTime,
+      ...req.body,
     });
     flight.id = flight._id.toString();
 
@@ -49,7 +45,7 @@ const ADD_FLIGHT_TO_CART = async (req, res) => {
 
 const GET_ALL_FLIGHTS = async (req, res) => {
   try {
-    const flights = await FlightModel.find();
+    const flights = await FlightModel.find({ userId: req.body.userId });
 
     if (!flights.length) {
       return res.status(200).json({ message: "Data not exist" });
