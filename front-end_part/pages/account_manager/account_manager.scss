@@ -75,7 +75,15 @@ button {
   }
 }
 
-form {
+input {
+  background-color: #eee;
+  border: none;
+  padding: 0.75rem 0.9375rem;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.form {
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -84,14 +92,6 @@ form {
   padding: 0 3.125rem;
   height: 100%;
   text-align: center;
-}
-
-input {
-  background-color: #eee;
-  border: none;
-  padding: 0.75rem 0.9375rem;
-  margin: 0.5rem 0;
-  width: 100%;
 }
 
 .container {

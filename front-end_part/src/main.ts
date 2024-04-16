@@ -36,10 +36,16 @@ const fetchFlights = async () => {
 
 const postFlight = async (flightData: FlightType) => {
   try {
+    const jwtToken = localStorage.getItem("jwt");
+
+    if (!jwtToken) {
+      throw new Error("JWT token not found");
+    }
+
     const response = await fetch("http://localhost:3000/flights", {
       method: "POST",
       headers: {
-        Accept: "application/json",
+        Authorization: `${jwtToken}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(flightData),
